@@ -30,9 +30,9 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@id/btn_back"
-        android:text="选择图片"
+        android:text="Select Image"
         android:textColor="#ffffff"
-        android:textSize="16dp"/>
+        android:textSize="16dp" />
 
     <Button
         android:id="@+id/btn_ok"
@@ -46,9 +46,9 @@
         android:minHeight="30dp"
         android:minWidth="50dp"
         android:padding="8dp"
-        android:text="完成(3/9)"
+        android:text="(3/9)"
         android:textColor="#ffffff"
-        android:textSize="14dp"/>
+        android:textSize="14dp" />
 
     <ImageView
         android:id="@+id/btn_del"
