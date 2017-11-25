@@ -1,5 +1,6 @@
 package com.lzy.imagepicker.ui;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class ImagePreviewDelActivity extends ImagePreviewBaseActivity implements
 
         mTitleCount.setText(getString(R.string.preview_image_count, mCurrentPosition + 1, mImageItems.size()));
         //滑动ViewPager的时候，根据外界的数据改变当前的选中状态和当前的图片的位置描述文本
-        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 mCurrentPosition = position;
@@ -60,6 +61,7 @@ public class ImagePreviewDelActivity extends ImagePreviewBaseActivity implements
         builder.setMessage("要删除这张照片吗？");
         builder.setNegativeButton("取消", null);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @SuppressLint("StringFormatMatches")
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //移除当前图片刷新界面

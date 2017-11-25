@@ -1,5 +1,6 @@
 package com.lzy.imagepicker.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -61,7 +62,8 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
         mTitleCount.setText(getString(R.string.preview_image_count, mCurrentPosition + 1, mImageItems.size()));
         mCbCheck.setChecked(isSelected);
         //滑动ViewPager的时候，根据外界的数据改变当前的选中状态和当前的图片的位置描述文本
-        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @SuppressLint("StringFormatMatches")
             @Override
             public void onPageSelected(int position) {
                 mCurrentPosition = position;
@@ -73,6 +75,7 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
         });
         //当点击当前选中按钮的时候，需要根据当前的选中状态添加和移除图片
         mCbCheck.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StringFormatMatches")
             @Override
             public void onClick(View v) {
                 ImageItem imageItem = mImageItems.get(mCurrentPosition);
@@ -91,6 +94,7 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
      * 图片添加成功后，修改当前图片的选中数量
      * 当调用 addSelectedImageItem 或 deleteSelectedImageItem 都会触发当前回调
      */
+    @SuppressLint("StringFormatMatches")
     @Override
     public void onImageSelected(int position, ImageItem item, boolean isAdd) {
         if (imagePicker.getSelectImageCount() > 0) {

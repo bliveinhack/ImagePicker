@@ -3,6 +3,7 @@ package com.lzy.imagepicker.ui;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -85,7 +86,7 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_grid);
+
 
         imagePicker = ImagePicker.getInstance();
         imagePicker.clear();
@@ -105,7 +106,13 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
             ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(EXTRAS_IMAGES);
             imagePicker.setSelectedImages(images);
         }
+        if(imagePicker.isLandscape()){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
+        setContentView(R.layout.activity_image_grid);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler);
 
@@ -142,6 +149,8 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
         }else{
             new ImageDataSource(this, null, this);
         }
+
+
     }
 
     @Override

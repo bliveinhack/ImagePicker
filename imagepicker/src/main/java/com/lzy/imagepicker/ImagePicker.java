@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -70,6 +71,16 @@ public class ImagePicker {
     private File cropCacheFolder;
     private File takeImageFile;
     public Bitmap cropBitmap;
+
+    public boolean isLandscape() {
+        return isLandscape;
+    }
+
+    public void setLandscape(boolean landscape) {
+        isLandscape = landscape;
+    }
+
+    private boolean isLandscape=true;
 
     private ArrayList<ImageItem> mSelectedImages = new ArrayList<>();   //选中的图片集合
     private List<ImageFolder> mImageFolders;      //所有的图片文件夹

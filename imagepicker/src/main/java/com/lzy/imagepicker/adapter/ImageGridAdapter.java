@@ -1,6 +1,7 @@
 package com.lzy.imagepicker.adapter;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
@@ -129,6 +130,7 @@ public class ImageGridAdapter extends BaseAdapter {
                 }
             });
             holder.cbCheck.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("StringFormatMatches")
                 @Override
                 public void onClick(View v) {
                     int selectLimit = imagePicker.getSelectLimit();

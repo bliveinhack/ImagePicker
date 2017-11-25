@@ -1,6 +1,7 @@
 package com.lzy.imagepicker.ui;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -40,10 +41,16 @@ public class ImageCropActivity extends ImageBaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_crop);
+
 
         imagePicker = ImagePicker.getInstance();
+        if(imagePicker.isLandscape()){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
+        setContentView(R.layout.activity_image_crop);
         //初始化View
         findViewById(R.id.btn_back).setOnClickListener(this);
         Button btn_ok = (Button) findViewById(R.id.btn_ok);

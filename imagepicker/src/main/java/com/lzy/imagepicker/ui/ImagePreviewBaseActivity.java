@@ -1,5 +1,6 @@
 package com.lzy.imagepicker.ui;
 
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,13 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        imagePicker = ImagePicker.getInstance();
+        if(imagePicker.isLandscape()){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         setContentView(R.layout.activity_image_preview);
 
         mCurrentPosition = getIntent().getIntExtra(ImagePicker.EXTRA_SELECTED_IMAGE_POSITION, 0);
@@ -55,7 +63,6 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
         }
 
 
-        imagePicker = ImagePicker.getInstance();
         selectedImages = imagePicker.getSelectedImages();
 
         //初始化控件
