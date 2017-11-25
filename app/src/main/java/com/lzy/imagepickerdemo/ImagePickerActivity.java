@@ -154,6 +154,8 @@ public class ImagePickerActivity extends AppCompatActivity implements SeekBar.On
                 imagePicker.setOutPutX(Integer.valueOf(et_outputx.getText().toString()));
                 imagePicker.setOutPutY(Integer.valueOf(et_outputy.getText().toString()));
 
+                imagePicker.setLandscape(true);
+
                 Intent intent = new Intent(this, ImageGridActivity.class);
                 intent.putExtra(ImageGridActivity.EXTRAS_IMAGES,images);
                 //ImagePicker.getInstance().setSelectedImages(images);
